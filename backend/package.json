@@ -12,6 +12,7 @@
   "author": "sandeep kumar & anamika srivastava",
   "license": "ISC",
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@langchain/google-genai": "^1.0.1",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
