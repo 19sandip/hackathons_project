@@ -2,8 +2,7 @@ import { createServer } from "node:http";
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import userRouter from "./src/routers/userRouter";
-
+import  runMultiAgent  from "./src/agents/architechture.agent.js";
 dotenv.config();
 
 const app = express();
@@ -14,7 +13,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const server = createServer(app);
 
-app.use("/user", userRouter);
+app.post("/explain", async (req, res) => {
+  const {repoUrl} = req.body;
+const question = "How does this repo handle routing?";
+console.log(repoUrl)
+const result = await runMultiAgent(repoUrl, question);
+res.json(result);
+})
+
+
+
+//
 
 const start = async () => {
   //   await mongoose.connect(MONGO_URI);
